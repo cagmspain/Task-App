@@ -1,10 +1,14 @@
 <template>
-	<div>
-		<h1>MI APP TASK APP</h1>
-	</div>
 	<ul>
-		<li><RouterLink :to="{ name: 'home' }">HOME</RouterLink></li>
-		<li><RouterLink :to="{ name: 'login' }">LOGIN</RouterLink></li>
+		<li>
+			<router-link :to="{ name: 'home' }">Home</router-link>
+		</li>
+		<li>
+			<router-link :to="{ name: 'login' }">Login</router-link>
+		</li>
+		<li>
+			<router-link :to="{ name: 'signup' }">Sign Up</router-link>
+		</li>
 	</ul>
 
 	<RouterView></RouterView>
