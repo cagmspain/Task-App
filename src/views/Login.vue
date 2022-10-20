@@ -1,7 +1,7 @@
 <template>
 	<div class="section">
 		<div class="container">
-			<h2>Log into your account</h2>
+			<h1>Log into your account</h1>
 			<br />
 			<form @submit.prevent="onSubmit">
 				<div class="field">
@@ -36,6 +36,9 @@
 					</div>
 				</div>
 			</form>
+			<router-link :to="{ name: 'signup' }"
+				>Not registered? --> Sign Up</router-link
+			>
 		</div>
 	</div>
 </template>

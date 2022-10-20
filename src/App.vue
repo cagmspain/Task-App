@@ -1,25 +1,14 @@
 <template>
-	<ul>
-		<li>
-			<router-link :to="{ name: 'home' }">Home</router-link>
-		</li>
-		<li>
-			<router-link :to="{ name: 'login' }">Login</router-link>
-		</li>
-		<li>
-			<router-link :to="{ name: 'signup' }">Sign Up</router-link>
-		</li>
-	</ul>
-
+	<Navbar />
 	<RouterView></RouterView>
 </template>
 <script setup>
 import { createClient } from "@supabase/supabase-js";
+import { useAuthStore } from "./store/index";
+import Navbar from "./components/Navbar.vue";
 
-const supabase = createClient(
-	import.meta.env.VITE_SUPABASE_URL,
-	import.meta.env.VITE_SUPABASE_KEY
-);
-console.log(supabase);
+const auth = useAuthStore();
+console.log(auth.isAuth);
 </script>
+
 <style scoped></style>

@@ -5,9 +5,9 @@
 		aria-label="main navigation"
 	>
 		<div class="navbar-brand">
-			<a class="navbar-item" href="https://bulma.io">
-				<img src="" width="112" height="28" />
-			</a>
+			<router-link class="navbar-item" :to="{ name: 'home' }">
+				<img src="../assets/logo.png" alt="logo" height="28" />
+			</router-link>
 			<a
 				role="button"
 				@click="toggleMenu"
@@ -28,9 +28,18 @@
 			:class="{ 'is-active': isOpen }"
 		>
 			<div class="navbar-start">
-				<a class="navbar-item"> Home </a>
-				<a class="navbar-item"> Login </a>
-				<a class="navbar-item"> Sign Up </a>
+				<router-link class="navbar-item" :to="{ name: 'home' }"
+					>Home</router-link
+				>
+				<router-link class="navbar-item" :to="{ name: 'tasks' }"
+					>Tasks</router-link
+				>
+				<router-link class="navbar-item" :to="{ name: 'login' }"
+					>Login</router-link
+				>
+				<router-link class="navbar-item" :to="{ name: 'signup' }"
+					>Sign Up</router-link
+				>
 			</div>
 		</div>
 	</nav>
@@ -46,8 +55,9 @@ const toggleMenu = () => {
 .navbar {
 	background-color: transparent;
 }
+
 .navbar-start {
 	flex: 1;
-	justify-content: center;
+	justify-content: flex-end;
 }
 </style>
