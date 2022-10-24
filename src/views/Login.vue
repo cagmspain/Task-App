@@ -57,7 +57,7 @@ const onSubmit = async () => {
 		if (data.user) {
 			const id = data.user.id;
 			authStore.login(email.value, password.value, id);
-			router.push({ name: "home" });
+			router.push({ name: "tasks" });
 		} else {
 			alert("usuario o contraseña invalida");
 		}

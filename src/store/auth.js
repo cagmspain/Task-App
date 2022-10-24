@@ -12,6 +12,7 @@ export const useAuthStore = defineStore("auth", {
 			user: {
 				name: "",
 				email: "",
+				password: "",
 			},
 		};
 	},
@@ -29,7 +30,7 @@ export const useAuthStore = defineStore("auth", {
 			this.user.password = "";
 		},
 	},
-	presist: {
+	persist: {
 		// Nos activa la persistencia del store
 		enabled: true,
 		strategies: [

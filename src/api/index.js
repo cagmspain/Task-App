@@ -29,8 +29,10 @@ task: {
             description: 'Descripcion del task'
         }
 */
-export const newTask = async (task) => {
-	const response = await supabase.from("task").insert(task);
+export const newTask = async (id, titulo, descripcion) => {
+	const response = await supabase
+		.from("task")
+		.insert({ user_id: id, title: titulo, description: descripcion });
 	// TODO identificar la  respuesta y retornar lo que necesitemos p.ej true si se ha insertado el registro y false si no
 	// El response no retorna el id de la task que se ha creado tendremos que volver a hace un getTask para obtener los id
 	console.log(response);
@@ -42,6 +44,7 @@ export const getTasks = async () => {
 		.select("*")
 		.order("id", { ascending: false });
 	console.log(response);
+	return response.data;
 	// TODO retornar la informacion de los task, ej response.data
 };
 
@@ -56,6 +59,17 @@ export const updateTask = async (taskId, task) => {
 
 	// TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
 	console.log(response);
+};
+export const statusTask = async (taskId, estado) => {
+	const response = await supabase
+		.from("task")
+		.update({
+			// title: titulo,
+			// description: descripcion,
+			isCreated: estado,
+		})
+		.eq("id", taskId);
+	// TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
 };
 
 export const deleteTask = async (taskId) => {

@@ -31,9 +31,11 @@
 				<router-link class="navbar-item" :to="{ name: 'home' }"
 					>Home</router-link
 				>
+
 				<router-link class="navbar-item" :to="{ name: 'tasks' }"
-					>Tasks</router-link
-				>
+					>Tasks
+				</router-link>
+
 				<router-link class="navbar-item" :to="{ name: 'login' }"
 					>Login</router-link
 				>
@@ -59,5 +61,6 @@ const toggleMenu = () => {
 .navbar-start {
 	flex: 1;
 	justify-content: flex-end;
+	font-weight: 700;
 }
 </style>

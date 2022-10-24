@@ -1,49 +1,60 @@
 <template>
-	<div class="mt-5">
-		<form @submit.prevent="onSubmit">
-			<div class="field">
-				<label class="label">Title</label>
-				<div class="control">
-					<input
-						v-model="title"
-						class="input"
-						type="text"
-						placeholder="title"
-					/>
-				</div>
-			</div>
-			<div class="control">
-				<label class="label">Description</label>
-				<textarea
-					v-model="message"
-					class="textarea"
-					placeholder="Escribe un task"
-				></textarea>
-			</div>
-			<div class="control">
-				<button type="submit" class="mt-2 button is-info">Publicar</button>
-			</div>
-		</form>
+	<NewTasks />
+	<div class="section" v-for="task in taskStore.tasks" :key="task.id">
+		<div v-if="!task.isCreated">
+			<div>{{ task.title }} - {{ task.created_at }}</div>
+			<div>{{ task.description }}</div>
+			<button @click="eliminateTask(task.id)">Delete</button>
+			<button @click="setDoneTask(task.id)">Done</button>
+			<button @click="enableEditTask(task.id)">Edit</button>
+		</div>
+		<div class="done" v-else>
+			<div>{{ task.title }} - {{ task.created_at }}</div>
+			<div>{{ task.description }}</div>
+			<button @click="eliminateTask(task.id)">Delete</button>
+			<button @click="setDoneTask(task.id)">Done</button>
+			<button>archive</button>
+		</div>
 	</div>
 </template>
 <script setup>
-import { ref } from "vue";
-import { useAuthStore, useTaskStore } from "../store/index";
-import { newTask, supabase } from "../api/index";
+import { ref, onMounted, pushScopeId } from "vue";
+import { useAuthStore, useTaskStore } from "../store";
+import NewTasks from "../components/NewTasks.vue";
 
-const message = ref("");
-const title = ref("");
+import { deleteTask, getTasks, updateTask, statusTask } from "../api";
+import router from "../router";
 const authStore = useAuthStore();
 const taskStore = useTaskStore();
-const id = authStore.id;
+const tasks = ref("");
 
-const onSubmit = async () => {
-	const response = await supabase.from("task").insert({
-		user_id: id,
-		title: title.value,
-		description: message.value,
-	});
-	console.log(response);
+onMounted(() => {
+	//await getTasks()
+	taskStore.setTask();
+});
+const eliminateTask = async (id) => {
+	await deleteTask(id);
+	taskStore.deleteTask(id);
+	taskStore.setTask(id);
 };
+const isRender = ref(false);
+
+const show = () => {
+	isRender.value = !isRender.value;
+};
+
+let estado = false;
+const setDoneTask = async (id) => {
+	estado = !estado;
+	const task = { created_at: estado };
+	taskStore.updateTask(id, task);
+	await statusTask(id, estado);
+};
+
+const enableEditTask = (id) => {};
 </script>
-<style scoped></style>
+<style scoped>
+div.done div {
+	text-decoration: line-through;
+}
+</style>

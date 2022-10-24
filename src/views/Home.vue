@@ -13,6 +13,7 @@
 				<button @click="authStore.logout()" class="button is-danger">
 					Cerrar Sesión
 				</button>
+				<RouterView></RouterView>
 			</div>
 		</div>
 	</div>
