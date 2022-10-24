@@ -1,5 +1,4 @@
 <template>
-	<Navbar />
 	<RouterView></RouterView>
 </template>
 <script setup>

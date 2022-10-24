@@ -1,4 +1,5 @@
 <template>
+	<Navbar />
 	<div class="section">
 		<div class="container">
 			<article v-if="!authStore.isAuth" class="message is-danger">
@@ -20,6 +21,7 @@
 </template>
 <script setup>
 import { useAuthStore } from "../store/auth";
+import Navbar from "../components/Navbar.vue";
 const authStore = useAuthStore();
 //console.log(authStore.user.email);
 </script>
