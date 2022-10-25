@@ -11,7 +11,7 @@
 			</div>
 			<footer class="card-footer">
 				<button
-					class="card-footer-item button is-danger is-light"
+					class="card-footer-item button is-danger"
 					@click="eliminateTask(props.task.id)"
 				>
 					Delete
@@ -33,19 +33,14 @@
 		<div v-else>
 			<header class="card-header">
 				<input
-					v-model="title"
+					:v-model="title"
 					type="text"
 					:placeholder="props.task.title"
 					class="card-header-title"
 				/>
 			</header>
 			<div class="card-content">
-				<textarea
-					v-model="description"
-					:placeholder="props.task.title"
-					class="content"
-				>
-				</textarea>
+				<textarea :placeholder="props.task.description"></textarea>
 			</div>
 			<footer class="card-footer">
 				<button

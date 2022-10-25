@@ -21,7 +21,9 @@
 				></textarea>
 			</div>
 			<div class="control">
-				<button type="submit" class="mt-2 button is-info">Create!</button>
+				<button @click="closeModal" type="submit" class="mt-2 button is-info">
+					Create!
+				</button>
 			</div>
 		</form>
 	</div>
@@ -31,6 +33,8 @@ import { ref } from "vue";
 import { useTaskStore } from "../store/task";
 import { useAuthStore } from "../store/auth";
 import { newTask } from "../api";
+
+const emits = defineEmits(["close"]);
 const taskStore = useTaskStore();
 const authStore = useAuthStore();
 const message = ref("");
@@ -48,6 +52,12 @@ const onSubmit = async () => {
 	taskStore.addTask(task);
 	message.value = "";
 	title.value = "";
+};
+
+//emit event from modal
+
+const closeModal = () => {
+	emits("close");
 };
 </script>
 <style scoped></style>

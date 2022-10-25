@@ -27,7 +27,7 @@ export const useTaskStore = defineStore("task", {
 			const findIndex = this.tasks.findIndex((elem) => {
 				return elem.id === id;
 			});
-			console.log("este es el index", findIndex);
+			//console.log("este es el index", findIndex);
 			return this.tasks.splice(findIndex, 1);
 			// todo , borrar esa task buscando el indice del id
 		},

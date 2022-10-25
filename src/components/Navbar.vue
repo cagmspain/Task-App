@@ -32,10 +32,6 @@
 					>Home</router-link
 				>
 
-				<router-link class="navbar-item" :to="{ name: 'tasks' }"
-					>Tasks
-				</router-link>
-
 				<router-link class="navbar-item" :to="{ name: 'login' }"
 					>Login</router-link
 				>

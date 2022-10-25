@@ -3,7 +3,7 @@
 	<div class="section">
 		<div class="container">
 			<article v-if="!authStore.isAuth" class="message is-danger">
-				<div class="message-body">
+				<div class="card message-body">
 					Bienvenido! <br />
 					Inicia sesion en la APP para ver contenido <br />
 					<router-link :to="{ name: 'login' }"> Ir a Login </router-link>
@@ -14,6 +14,7 @@
 				<button @click="authStore.logout()" class="button is-danger">
 					Cerrar Sesión
 				</button>
+
 				<RouterView></RouterView>
 			</div>
 		</div>
@@ -21,8 +22,16 @@
 </template>
 <script setup>
 import { useAuthStore } from "../store/auth";
+import { useTaskStore } from "../store";
+import { onMounted, ref } from "vue";
 import Navbar from "../components/Navbar.vue";
+import Tasks from "../views/Tasks.vue";
 const authStore = useAuthStore();
-//console.log(authStore.user.email);
+const taskStore = useTaskStore();
+
+//await getTasks()
+
+//const tasksLenght = taskStore.tasks.length;
+//console.log("lomgitud tasks", tasksLenght);
 </script>
 <style scoped></style>
