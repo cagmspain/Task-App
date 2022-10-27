@@ -1,7 +1,7 @@
 <template>
 	<div class="section">
 		<div class="container">
-			<h2>Sign up for an account Hello</h2>
+			<h2>Sign up for an account</h2>
 			<br />
 			<form @submit.prevent="handleSignup">
 				<div class="field">
@@ -50,7 +50,11 @@
 				</div>
 				<div class="field">
 					<div class="control">
-						<input class="button is-link is-fullwidth" type="submit" />
+						<input
+							@click="closeModal"
+							class="button is-link is-fullwidth"
+							type="submit"
+						/>
 					</div>
 				</div>
 			</form>
@@ -67,6 +71,7 @@ const name = ref("");
 const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
+const emits = defineEmits(["close"]);
 const verificarPassword = () => {
 	if (password.value === confirmPassword.value) {
 		return true;
@@ -81,13 +86,18 @@ const handleSignup = async () => {
 				email: email.value,
 				password: password.value,
 			});
-			router.push({ name: "login" });
+			router.push({ name: "home" });
 		} else {
 			return alert("password doesn't match");
 		}
 	} catch (error) {
 		alert(error.error_description || error.message);
 	}
+};
+
+//modal
+const closeModal = () => {
+	emits("close");
 };
 </script>
 <style scoped></style>

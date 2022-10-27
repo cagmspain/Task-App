@@ -20,7 +20,7 @@
 		</div>
 	</div>
 
-	<div v-if="taskLenght > 0" class="section">
+	<div v-if="taskLenght" class="section">
 		<div class="container">
 			<div class="columns is-multiline">
 				<div
@@ -49,43 +49,27 @@
 
 				<div>
 					<div class="media">
-						<div class="media-left">
-							<figure class="image is-48x48">
-								<img src="../assets/logo.png" alt="Placeholder image" />
-							</figure>
-						</div>
+						<div class="media-left"></div>
 						<div class="media-content is-centrado">
 							<div class="subtitle is-4">Start by adding your tasks!</div>
 						</div>
 					</div>
 					<div class="media">
-						<div class="media-left">
-							<figure class="image is-48x48">
-								<img src="../assets/logo.png" alt="Placeholder image" />
-							</figure>
-						</div>
+						<div class="media-left"></div>
 						<div class="media-content is-centrado">
-							<div class="subtitle is-4">Start by adding your tasks!</div>
+							<div class="subtitle is-4">You can mark as done</div>
 						</div>
 					</div>
 					<div class="media">
-						<div class="media-left">
-							<figure class="image is-48x48">
-								<img src="../assets/logo.png" alt="Placeholder image" />
-							</figure>
-						</div>
+						<div class="media-left"></div>
 						<div class="media-content is-centrado">
-							<div class="subtitle is-4">Start by adding your tasks!</div>
+							<div class="subtitle is-4">Edit your task</div>
 						</div>
 					</div>
 					<div class="media">
-						<div class="media-left">
-							<figure class="image is-48x48">
-								<img src="../assets/logo.png" alt="Placeholder image" />
-							</figure>
-						</div>
+						<div class="media-left"></div>
 						<div class="media-content is-centrado">
-							<div class="subtitle is-4">Start by adding your tasks!</div>
+							<div class="subtitle is-4">Delete your task</div>
 						</div>
 					</div>
 				</div>
@@ -107,7 +91,7 @@ const taskStore = useTaskStore();
 const tasks = ref("");
 
 onMounted(() => {
-	//await getTasks()
+	//await getTasks();
 	taskStore.setTask();
 });
 
@@ -116,7 +100,7 @@ let isShowModal = ref(false);
 const toggleEdit = () => {
 	isShowModal.value = !isShowModal.value;
 };
-let taskLenght = ref();
+let taskLenght = ref(taskStore.tasks.length);
 //emppty state
 watch(
 	() => taskStore.tasks.length,

@@ -1,8 +1,6 @@
 <template>
 	<div class="section">
 		<div class="container">
-			<h1>Log into your account</h1>
-			<br />
 			<form @submit.prevent="onSubmit">
 				<div class="field">
 					<label class="label">Email</label>
@@ -28,17 +26,20 @@
 				</div>
 				<div class="field">
 					<div class="control">
-						<input
+						<button
 							class="button is-link is-fullwidth"
 							type="submit"
 							placeholder="Text input"
-						/>
+						>
+							Iniciar sesión
+						</button>
 					</div>
 				</div>
 			</form>
-			<router-link :to="{ name: 'signup' }"
-				>Not registered? --> Sign Up</router-link
-			>
+			<hr />
+			<button class="button is-info is-fullwidth" @click="closeModal">
+				Crea una cuenta
+			</button>
 		</div>
 	</div>
 </template>
@@ -51,19 +52,26 @@ const router = useRouter();
 const authStore = useAuthStore();
 const email = ref("");
 const password = ref("");
+const emits = defineEmits(["close"]);
+
 const onSubmit = async () => {
 	try {
 		const data = await logIn(email.value, password.value);
 		if (data.user) {
 			const id = data.user.id;
 			authStore.login(email.value, password.value, id);
-			router.push({ name: "tasks" });
+			router.push({ name: "home" });
 		} else {
 			alert("usuario o contraseña invalida");
 		}
 	} catch (error) {
 		console.log(error.error_description || error.message);
 	}
+};
+
+//modal emit
+const closeModal = () => {
+	emits("close");
 };
 </script>
 <style scoped></style>

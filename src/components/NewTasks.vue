@@ -1,5 +1,5 @@
 <template>
-	<div class="mt-5">
+	<div class="container">
 		<form @submit.prevent="onSubmit">
 			<div class="field">
 				<label class="label">Title</label>
@@ -29,7 +29,7 @@
 	</div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useTaskStore } from "../store/task";
 import { useAuthStore } from "../store/auth";
 import { newTask } from "../api";

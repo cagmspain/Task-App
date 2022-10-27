@@ -1,6 +1,6 @@
 <template>
 	<div class="card" v-if="(estado = !task.isCreated)">
-		<div v-if="!editMode">
+		<div class="card-flex" v-if="!editMode">
 			<header class="card-header">
 				<p class="card-header-title">{{ props.task.title }}</p>
 			</header>
@@ -98,6 +98,7 @@ const taskStore = useTaskStore();
 const props = defineProps({
 	task: Object,
 });
+
 const eliminateTask = async (id) => {
 	taskStore.setTask();
 	await deleteTask(id);
@@ -136,5 +137,8 @@ const editedTask = async (id) => {
 .done .card-content {
 	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 5px;
+}
+.card {
+	height: 100%;
 }
 </style>
