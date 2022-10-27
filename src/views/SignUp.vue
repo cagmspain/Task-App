@@ -50,11 +50,7 @@
 				</div>
 				<div class="field">
 					<div class="control">
-						<input
-							@click="closeModal"
-							class="button is-link is-fullwidth"
-							type="submit"
-						/>
+						<input class="button is-link is-fullwidth" type="submit" />
 					</div>
 				</div>
 			</form>
@@ -72,23 +68,29 @@ const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 const emits = defineEmits(["close"]);
-const verificarPassword = () => {
-	if (password.value === confirmPassword.value) {
-		return true;
-	} else {
+
+const verificarPasswordLongitud = () => {
+	if (password.value.length < 6) {
+		alert("password to short");
+	} else if (password.value !== confirmPassword.value) {
+		alert("password doesn't match");
 		return false;
+	} else {
+		return true;
 	}
 };
+
 const handleSignup = async () => {
 	try {
-		if (verificarPassword()) {
+		if (verificarPasswordLongitud()) {
 			const response = await supabase.auth.signUp({
 				email: email.value,
 				password: password.value,
 			});
+			closeModal();
+			console.log(response);
+
 			router.push({ name: "home" });
-		} else {
-			return alert("password doesn't match");
 		}
 	} catch (error) {
 		alert(error.error_description || error.message);

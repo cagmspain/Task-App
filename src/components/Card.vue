@@ -138,7 +138,4 @@ const editedTask = async (id) => {
 	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 5px;
 }
-.card {
-	height: 100%;
-}
 </style>
