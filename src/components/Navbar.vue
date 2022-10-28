@@ -28,10 +28,10 @@
 			:class="{ 'is-active': isOpen }"
 		>
 			<div class="navbar-start">
-				<div>
+				<div class="user-logged">
 					<div>{{ authStore.user.email }}</div>
-					<button @click="authStore.logout()" class="button is-danger is-light">
-						Cerrar Sesión
+					<button @click="authStore.logout()" class="button is-ghost">
+						<i class="fa-solid fa-right-from-bracket"></i>
 					</button>
 				</div>
 			</div>
@@ -56,5 +56,10 @@ const toggleMenu = () => {
 	flex: 1;
 	justify-content: flex-end;
 	font-weight: 700;
+}
+.user-logged {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 </style>
