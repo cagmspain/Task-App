@@ -1,12 +1,11 @@
 <template>
-	<div class="section">
-		<div class="card">
-			<div class="card-content">
-				<div class="content">
-					<button class="button is-info" @click="toggleEdit">
-						Add new task
-					</button>
-				</div>
+	<div class="container">
+		<div class="card-content button-add">
+			<div class="content">
+				<button class="button is-info" @click="toggleEdit">
+					<div>Add new task</div>
+					<div><i class="fa-solid fa-plus"></i></div>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -38,43 +37,40 @@
 		</div>
 	</div>
 	<div v-else class="section">
-		<div class="card">
-			<div class="card-content">
-				<div class="media">
-					<div class="media-left">
-						<figure class="image is-48x48">
-							<img src="../assets/logo.png" alt="Placeholder image" />
-						</figure>
-					</div>
-					<div class="media-content is-centrado">
-						<div class="title is-4">Wellcome to you tasks app!!</div>
+		<div>
+			<div class="greetings">
+				<div class="media-content is-centrado">
+					<div class="title is-4">Here we go!!</div>
+				</div>
+			</div>
+
+			<div class="contenedor">
+				<div class="media-content is-centrado">
+					<div class="subtitle piece1 is-5">
+						<div><i class="fa-solid fa-plus"></i></div>
+
+						<div class="letras">Add your tasks!</div>
 					</div>
 				</div>
 
-				<div>
-					<div class="media">
-						<div class="media-left"></div>
-						<div class="media-content is-centrado">
-							<div class="subtitle is-4">Start by adding your tasks!</div>
-						</div>
+				<div class="media-content is-centrado">
+					<div class="subtitle piece2 is-5">
+						<div><i class="fa-solid fa-check"></i></div>
+						<div class="letras">You can mark as done</div>
 					</div>
-					<div class="media">
-						<div class="media-left"></div>
-						<div class="media-content is-centrado">
-							<div class="subtitle is-4">You can mark as done</div>
-						</div>
+				</div>
+
+				<div class="media-content is-centrado">
+					<div class="subtitle piece1 is-5">
+						<div><i class="fa-solid fa-pen-to-square"></i></div>
+						<div class="letras">Edit your tasks</div>
 					</div>
-					<div class="media">
-						<div class="media-left"></div>
-						<div class="media-content is-centrado">
-							<div class="subtitle is-4">Edit your task</div>
-						</div>
-					</div>
-					<div class="media">
-						<div class="media-left"></div>
-						<div class="media-content is-centrado">
-							<div class="subtitle is-4">Delete your task</div>
-						</div>
+				</div>
+
+				<div class="media-content is-centrado">
+					<div class="subtitle piece2 is-5">
+						<div><i class="fa-solid fa-trash"></i></div>
+						<div class="letras">Delete your tasks</div>
 					</div>
 				</div>
 			</div>
@@ -120,5 +116,42 @@ div.done div {
 }
 div.is-centrado {
 	text-align: center;
+}
+.button-add {
+	display: flex;
+	justify-content: center;
+}
+button.is-info {
+	min-width: 200px;
+	display: flex;
+	justify-content: space-around;
+	border-radius: 25px;
+}
+.greetings {
+	display: flex;
+	padding-bottom: 2rem;
+}
+.subtitle {
+	display: flex;
+	justify-content: center;
+	border-radius: 25px;
+	border: solid rgba(62, 142, 208, 0.5);
+	padding: 1rem;
+	margin: 1rem;
+	align-items: center;
+	max-width: 400px;
+}
+.letras {
+	padding-left: 2rem;
+	color: #3e8ed0;
+}
+div > div > i {
+	color: #3e8ed0;
+}
+.contenedor {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 </style>

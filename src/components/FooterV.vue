@@ -21,7 +21,7 @@
 <script setup></script>
 <style scoped>
 footer {
-	background-color: #485fc7;
+	background-color: #3e8ed0;
 	height: 15vh;
 	color: white;
 	display: flex;

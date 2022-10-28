@@ -11,22 +11,22 @@
 			</div>
 			<footer class="card-footer">
 				<button
-					class="card-footer-item button is-danger"
+					class="card-footer-item button is-light is-info"
 					@click="eliminateTask(props.task.id)"
 				>
-					Delete
+					<div><i class="fa-solid fa-trash"></i></div>
 				</button>
 				<button
-					class="card-footer-item button"
+					class="card-footer-item button is-light is-info"
 					@click="doneTask(props.task.id)"
 				>
-					Done
+					<div><i class="fa-solid fa-check"></i></div>
 				</button>
 				<button
-					class="card-footer-item button"
+					class="card-footer-item button is-light is-info"
 					@click="toggleEdit(props.task.id)"
 				>
-					Edit
+					<div><i class="fa-solid fa-pen-to-square"></i></div>
 				</button>
 			</footer>
 		</div>
@@ -40,20 +40,24 @@
 				/>
 			</header>
 			<div class="card-content">
-				<textarea :placeholder="props.task.description"></textarea>
+				<textarea
+					rows="4"
+					cols="30"
+					:placeholder="props.task.description"
+				></textarea>
 			</div>
 			<footer class="card-footer">
 				<button
-					class="card-footer-item button"
+					class="card-footer-item button is-info is-light"
 					@click="editedTask(props.task.id)"
 				>
-					Guardar
+					<div><i class="fa-regular fa-floppy-disk"></i></div>
 				</button>
 				<button
-					class="card-footer-item button"
+					class="card-footer-item button is-info is-light"
 					@click="toggleEdit(props.task.id)"
 				>
-					Cancel
+					<div><i class="fa-solid fa-xmark"></i></div>
 				</button>
 			</footer>
 		</div>
@@ -70,16 +74,16 @@
 		</div>
 		<footer class="card-footer">
 			<button
-				class="card-footer-item button is-light is-danger"
+				class="card-footer-item button is-light is-info"
 				@click="eliminateTask(props.task.id)"
 			>
-				Delete
+				<div><i class="fa-solid fa-trash"></i></div>
 			</button>
 			<button
-				class="card-footer-item button is-primary is-light"
+				class="card-footer-item button is-info is-light"
 				@click="undoTask(props.task.id)"
 			>
-				Deshacer
+				<div><i class="fa-solid fa-rotate-left"></i></div>
 			</button>
 		</footer>
 	</div>
