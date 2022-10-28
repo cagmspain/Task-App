@@ -1,7 +1,10 @@
 <template>
 	<div class="section">
 		<div class="container">
-			<h2>Sign up for an account</h2>
+			<h2 class="subtitle">
+				Falta poco para ser mas productivo... comencemos!
+			</h2>
+
 			<br />
 			<form @submit.prevent="handleSignup">
 				<div class="field">

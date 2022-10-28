@@ -28,22 +28,20 @@
 			:class="{ 'is-active': isOpen }"
 		>
 			<div class="navbar-start">
-				<router-link class="navbar-item" :to="{ name: 'home' }"
-					>Home</router-link
-				>
-
-				<router-link class="navbar-item" :to="{ name: 'login' }"
-					>Login</router-link
-				>
-				<router-link class="navbar-item" :to="{ name: 'signup' }"
-					>Sign Up</router-link
-				>
+				<div>
+					<div>{{ authStore.user.email }}</div>
+					<button @click="authStore.logout()" class="button is-danger is-light">
+						Cerrar Sesión
+					</button>
+				</div>
 			</div>
 		</div>
 	</nav>
 </template>
 <script setup>
 import { ref } from "vue";
+import { useAuthStore } from "../store/auth";
+const authStore = useAuthStore();
 const isOpen = ref(false);
 const toggleMenu = () => {
 	isOpen.value = !isOpen.value;
